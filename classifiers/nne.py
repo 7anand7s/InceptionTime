@@ -1,4 +1,4 @@
-import keras
+import tensorflow as tf
 import numpy as np
 from utils.utils import calculate_metrics
 from utils.utils import create_directory
@@ -73,7 +73,7 @@ class Classifier_NNE:
                     # then compute the predictions
                     curr_y_pred = model.predict(x_test, y_true, x_train, y_train, y_test,
                                                 return_df_metrics=False)
-                    keras.backend.clear_session()
+                    tf.keras.backend.clear_session()
 
                     np.save(predictions_file_name, curr_y_pred)
 

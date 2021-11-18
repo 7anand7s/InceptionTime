@@ -50,7 +50,7 @@ def fit_classifier():
 
 
 def create_classifier(classifier_name, input_shape, nb_classes, output_directory,
-                      verbose=False, build=True):
+                      verbose=True, build=True):
     if classifier_name == 'nne':
         from classifiers import nne
         return nne.Classifier_NNE(output_directory, input_shape,
@@ -80,7 +80,7 @@ def get_xp_val(xp):
 
 
 ############################################### main
-root_dir = '/b/home/uha/hfawaz-datas/temp-dl-tsc/'
+root_dir = 'C:/Users/7anan/OneDrive/Desktop/Thesis/InceptionTime-master/InceptionTime-master/data_folder/'
 xps = ['use_bottleneck', 'use_residual', 'nb_filters', 'depth',
        'kernel_size', 'batch_size']
 
