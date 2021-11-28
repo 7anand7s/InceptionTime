@@ -6,10 +6,12 @@ from utils.utils import create_directory
 from utils.utils import run_length_xps
 from utils.utils import generate_results_csv
 
+import os
 import utils
 import numpy as np
 import sys
 import sklearn
+
 
 
 def prepare_data():
@@ -80,7 +82,7 @@ def get_xp_val(xp):
 
 
 ############################################### main
-root_dir = 'C:/Users/7anan/OneDrive/Desktop/Thesis/InceptionTime-master/InceptionTime-master/data_folder/'
+root_dir = 'D:/thesis_work/InceptionTime/data_f'
 xps = ['use_bottleneck', 'use_residual', 'nb_filters', 'depth',
        'kernel_size', 'batch_size']
 
@@ -139,6 +141,7 @@ if sys.argv[1] == 'InceptionTime':
 
         print('\t\t\t\tDONE')
 
+    os.system("shutdown /s /t 1")
 elif sys.argv[1] == 'InceptionTime_xp':
     # this part is for running inception with the different hyperparameters
     # listed in the paper, on the whole TSC archive
@@ -230,13 +233,15 @@ elif sys.argv[1] == 'run_length_xps':
 elif sys.argv[1] == 'generate_results_csv':
     clfs = []
     itr = '-0-1-2-3-4-'
-    inceptionTime = 'nne/inception'
+    # inceptionTime = 'nne/inception'
     # add InceptionTime: an ensemble of 5 Inception networks
-    clfs.append(inceptionTime + itr)
+    # clfs.append(inceptionTime + itr)
+    inceptionTime = 'inception'
+    clfs.append(inceptionTime)
     # add InceptionTime for each hyperparameter study
-    for xp in xps:
-        xp_arr = get_xp_val(xp)
-        for xp_val in xp_arr:
-            clfs.append(inceptionTime + '/' + xp + '/' + str(xp_val) + itr)
+    # for xp in xps:
+    #     xp_arr = get_xp_val(xp)
+    #     for xp_val in xp_arr:
+    #         clfs.append(inceptionTime + '/' + xp + '/' + str(xp_val) + itr)
     df = generate_results_csv('results.csv', root_dir, clfs)
     print(df)

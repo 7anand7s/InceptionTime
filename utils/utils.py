@@ -72,7 +72,7 @@ def read_all_datasets(root_dir, archive_name):
 
     if archive_name == 'TSC':
         for dataset_name in DATASET_NAMES:
-            root_dir_dataset = root_dir + '/archives/' + archive_name + '/' + dataset_name + '/'
+            root_dir_dataset = root_dir + '/UCR_TS_Archive_2015/' + archive_name + '/' + dataset_name + '/'
             file_name = root_dir_dataset + dataset_name
             x_train, y_train = readucr(file_name + '_TRAIN')
             x_test, y_test = readucr(file_name + '_TEST')
@@ -206,7 +206,7 @@ def save_logs(output_directory, hist, y_pred, y_true, duration,
     df_best_model['best_model_train_loss'] = row_best_model['loss']
     if plot_test_acc:
         df_best_model['best_model_val_loss'] = row_best_model['val_loss']
-    df_best_model['best_model_train_acc'] = row_best_model['acc']
+    df_best_model['best_model_train_acc'] = row_best_model['accuracy']
     if plot_test_acc:
         df_best_model['best_model_val_acc'] = row_best_model['val_acc']
     if lr == True:
